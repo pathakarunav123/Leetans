@@ -2,7 +2,7 @@ class Solution {
 public:
     int solve(int day,int stock,int t,vector<vector<vector<int>>>&dp,vector<int>& prices){
         if(day>=prices.size()) return 0;
-        if(t==2) return 0;
+        if(t==2) return 0;      //invalid edge Case formation if(t=2,1)
         if(dp[day][stock][t]!=-1)return dp[day][stock][t];
         int maxi = -1e9;
         if(stock==0){
