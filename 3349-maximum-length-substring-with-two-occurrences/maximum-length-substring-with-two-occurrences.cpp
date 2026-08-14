@@ -10,9 +10,9 @@ public:
                 hash[s[i]]--;
                 i++;
             }
-            if(hash[s[j]]<=2){
+            
                 ans = max(ans,j-i+1);
-            }
+            
         }        
         return ans;
     }
