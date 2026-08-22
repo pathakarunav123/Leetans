@@ -6,9 +6,9 @@ public:
         int x=n;
         while(n!=0){
             int digit = n%10;
+             n=n/10;
             sum +=digit;
             mul*=digit;
-            n=n/10;
         }
          if(x%(sum+mul)){
             return false;
