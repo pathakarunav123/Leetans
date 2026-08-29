@@ -20,6 +20,7 @@ public:
     }
 
     int numWays(int steps, int arrLen) {
+      //  int maxPos = max(arrlen,step+1);
         vector<vector<int>>dp(3001,vector<int>(steps+1,-1));
         int ans = solve(0,steps,dp,arrLen);
         return ans;
