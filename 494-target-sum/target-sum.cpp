@@ -12,7 +12,7 @@ public:
         }
         int take = 0;
         if(nums[i]<=p){
-            take += solve(i+1,p-nums[i],dp,nums);
+            take = solve(i+1,p-nums[i],dp,nums);
         }
         int not_take = solve(i+1,p,dp,nums);
         return dp[i][p]=take + not_take;
