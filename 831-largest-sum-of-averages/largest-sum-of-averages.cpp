@@ -1,6 +1,7 @@
 class Solution {
 public:
     double solve(int i, vector<vector<double>>&dp, vector<int>&nums, int k){
+        if(i==nums.size()) return 0;
         if(k==0){
             if(i==nums.size()){
                 return 0;
