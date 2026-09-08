@@ -4,10 +4,12 @@ public:
         if(i==arr.size()) return 0;
         if(dp[i]!=-1) return dp[i];
         int ans = -1e9;
-        int mx = 0;
-        for(int j=i; j<arr.size() && (j-i+1)<=k; j++){
+        int mx = -1e9;
+        for(int j=i; j<arr.size(); j++){
              mx = max(mx,arr[j]);
+            if(j-i+1<=k){
                 ans = max(ans,mx*(j-i+1)+solve(j+1,dp,arr,k));
+            }
         }
         return dp[i] = ans;
     }
