@@ -14,14 +14,13 @@ public:
         int solve(int i, vector<int>&dp,vector<vector<int>>&dp1,string&s, int k){
             if(i==s.size()) return 0;
             if(dp[i]!=-1) return dp[i];
-            int take =0;
+            int ans =solve(i+1,dp,dp1,s,k);
             for(int j=i+k-1; j<s.size(); j++){
                 if(isPal(i,j,dp1,s)){
-                    take = max(take,1+solve(j+1,dp,dp1,s,k));
+                    ans = max(ans,1+solve(j+1,dp,dp1,s,k));
                 }
             }
-           int not_take = solve(i+1,dp,dp1,s,k);
-           return dp[i] = max(take,not_take);
+           return dp[i] = ans;
         }
     int maxPalindromes(string s, int k) {
         int m = s.size();
