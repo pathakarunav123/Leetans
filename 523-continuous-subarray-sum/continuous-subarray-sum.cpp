@@ -7,7 +7,7 @@ public:
         prefix[0] = 0;
 
         for(int i = 1; i < prefix.size(); i++) {
-            prefix[i] = prefix[i - 1] + nums[i - 1];
+            prefix[i] += prefix[i - 1] + nums[i - 1];
         }
 
         unordered_map<int, int> mp;
