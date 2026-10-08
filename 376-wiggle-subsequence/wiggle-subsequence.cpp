@@ -6,7 +6,6 @@ public:
 
         if(i == nums.size() - 1)
             return 0;
-
         if(dp[i][j] != -1)
             return dp[i][j];
         int notTake = solve(i + 1, j, dp, nums);
