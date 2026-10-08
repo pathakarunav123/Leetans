@@ -1,38 +1,33 @@
 class Solution {
 public:
-
-    int solve(int i, int j, vector<vector<int>>& dp,
-              vector<int>& nums) {
-
-        if(i == nums.size() - 1)
-            return 0;
-        if(dp[i][j] != -1)
-            return dp[i][j];
-        int notTake = solve(i + 1, j, dp, nums);
-        int take = 0;
-        if(j == 1 && nums[i + 1] > nums[i]) {
-            take = 1 + solve(i + 1, 0, dp, nums);
-        }
-
-       
-        if(j == 0 && nums[i + 1] < nums[i]) {
-            take = 1 + solve(i + 1, 1, dp, nums);
-        }
-
-        return dp[i][j] = max(take, notTake);
-    }
-
     int wiggleMaxLength(vector<int>& nums) {
 
         int n = nums.size();
 
-        if(n <= 1)
+        if (n <= 1)
             return n;
 
-        vector<vector<int>> dp(n, vector<int>(2, -1));
-        int up = solve(0, 1, dp, nums);
-        int down = solve(0, 0, dp, nums);
+        vector<int> up(n, 1);
+        vector<int> down(n, 1);
 
-        return 1 + max(up, down);
+        int ans = 1;
+
+        for (int i = 1; i < n; i++) {
+
+            for (int j = 0; j < i; j++) {
+
+                if (nums[i] > nums[j]) {
+                    up[i] = max(up[i], down[j] + 1);
+                }
+
+                else if (nums[i] < nums[j]) {
+                    down[i] = max(down[i], up[j] + 1);
+                }
+            }
+
+            ans = max(ans, max(up[i], down[i]));
+        }
+
+        return ans;
     }
 };
