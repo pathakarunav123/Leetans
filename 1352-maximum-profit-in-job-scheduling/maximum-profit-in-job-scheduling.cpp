@@ -19,13 +19,13 @@ public:
         for(int i=0; i<startTime.size(); i++){
             job.push_back({startTime[i],endTime[i],profit[i]});
         }
-        sort(job.begin(),job.end(),
-        [](vector<int>&a, vector<int>&b){
-            if(a[0]==b[0]){
-                return a[1]<b[1];
-            }
-            return a[0] < b[0];
-        });
+        sort(job.begin(),job.end());
+       // [](vector<int>&a, vector<int>&b){
+        //    if(a[0]==b[0]){
+         //       return a[1]<b[1];
+         //   }
+     //       return a[0] < b[0];
+   //     });
 
        vector<int>dp(n+1,-1);
        int ans = solve(0,dp,job);
