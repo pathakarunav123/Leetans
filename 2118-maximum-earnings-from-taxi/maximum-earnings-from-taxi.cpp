@@ -14,8 +14,9 @@ public:
         return dp[i]=max(take,skip);
     }
     long long maxTaxiEarnings(int n, vector<vector<int>>& rides) {
+        int m = rides.size();
         sort(rides.begin(),rides.end());
-        vector<long long>dp(1000000+1,-1);
+        vector<long long>dp(m+1,-1);
         long long ans = solve(0,dp,rides);
         return ans;
     }
