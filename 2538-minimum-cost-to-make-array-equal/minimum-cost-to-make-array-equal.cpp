@@ -20,7 +20,7 @@ public:
         long long ans = LLONG_MAX;
         for(int i=0; i<sortedNum.size(); i++){
             long long x = sortedNum[i];
-            auto it = upper_bound(sortedNum.begin(),sortedNum.end(),x);
+            auto it = lower_bound(sortedNum.begin(),sortedNum.end(),x);
             long long k = it-sortedNum.begin();
             long long cl = prefixCost[k]*x - prefixWeight[k];
             long long cr = (prefixWeight[n]-prefixWeight[k]) - (prefixCost[n]-prefixCost[k])*x;
