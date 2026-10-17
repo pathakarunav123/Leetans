@@ -16,6 +16,7 @@ public:
             long long k = it-nums.begin();
             long long l = k*x-prefix[k];
             long long r = (prefix[n]-prefix[k])-(n-k)*x;
+            //  long long cum = prefix[n]-2*prefix[k]-n*x +2*k*x;
             ans.push_back(l+r);
         }
         return ans;
