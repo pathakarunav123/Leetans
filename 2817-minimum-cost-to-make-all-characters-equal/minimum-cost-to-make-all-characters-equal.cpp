@@ -6,7 +6,7 @@ public:
         if(dp[i]!=-1)return dp[i];
         long long cost =0;
         if(s[i]!=s[i-1]){
-            cost += min(1LL*i,n-i);
+            cost = min(1LL*i,n-i);
         }
          return dp[i] = cost+solve(i+1,dp,s);
     }
