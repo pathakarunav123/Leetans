@@ -1,7 +1,7 @@
 class Solution {
 public:
     int maxFrequencyScore(vector<int>& nums, long long k) {
-        int n = nums.size();
+        long long n = nums.size();
         sort(nums.begin(),nums.end());
         vector<long long>prefix(n+1);
         prefix[0]=0;
@@ -10,21 +10,30 @@ public:
         }
         long long l=0;
         long long freq = LLONG_MIN;
-        for(int r=0; r<nums.size(); r++){
+        long long r=0;
+       // for(int r=0; r<nums.size(); r++){
+         while(r<n){
             int m = l+(r-l)/2;
             int x=nums[m];
             long long cl = 1LL*x*(m-l)-(prefix[m]-prefix[l]);
             long long cr =(prefix[r+1]-prefix[m+1])-1ll*(r-m)*x;
             long long ct = cl+cr;
-            while(ct>k){
-                l++;
-                m = l+(r-l)/2;
-                cl = 1LL*x*(m-l)-(prefix[m]-prefix[l]);
-                cr=(prefix[r+1]-prefix[m+1])-1LL*(r-m)*x;
-                ct = cl+cr;
-            }
-            freq = max(freq,r-l+1);
-        }
+          //  while(ct>k){
+          //      l++;
+          //      m = l+(r-l)/2;
+          //      cl = 1LL*x*(m-l)-(prefix[m]-prefix[l]);
+          //      cr=(prefix[r+1]-prefix[m+1])-1LL*(r-m)*x;
+          //      ct = cl+cr;
+         //   }
+           if(ct<=k){
+             freq = max(freq,r-l+1);
+             r++;
+           }else{
+            l++;
+           }
+         }
+           
+     //   }
         return freq;
         
     }
