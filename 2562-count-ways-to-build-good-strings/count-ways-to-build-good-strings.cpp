@@ -9,7 +9,7 @@ public:
         int one_time = solve(i+one,dp,low,high,zero,one);
         int zero_time = solve(i+zero,dp,low,high,zero,one);
         if(i>=low){
-            ways+=1;
+            ways=1;
         }
         return dp[i]=(zero_time+one_time+ways)%MOD;
     }
