@@ -1,16 +1,15 @@
 class Solution {
 public:
     int MOD = 1e9+7;
-    bool hasApple(int x, int y,int r1,int r2,vector<string>&pizza){
-        bool ans = false;
-        for(int i=x; i<=r1; i++){
-            for(int j=y; j<=r2;j++){
+    bool hasApple(int x, int y,int endRow,int endCol,vector<string>&pizza){
+        for(int i=x; i<=endRow; i++){
+            for(int j=y; j<=endCol;j++){
                 if(pizza[i][j]=='A'){
-                    ans=true;
+                    return true;
                 }
             }
         }
-        return ans;
+        return false;;
     }
     int solve(int r, int c, int pieces, vector<vector<vector<int>>>&dp,vector<string>&pizza){
         int m = pizza.size();
