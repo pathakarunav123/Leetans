@@ -18,7 +18,7 @@ public:
             if(houses.size()-i < j) return 1e9;
             if(dp[i][j]!=-1)return dp[i][j];
             int ans =1e9;
-            for(int x=i; x<=houses.size()-j; x++){
+            for(int x=i; x<houses.size(); x++){
                 ans = min(ans,getCost(i,x,houses)+solve(x+1,j-1,dp,houses));
             }
             return dp[i][j]=ans;
