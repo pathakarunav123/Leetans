@@ -1,38 +1,26 @@
-
 class Solution {
 public:
-    vector<vector<long long>> memo;
-    vector<int> nums;
-    long long solve(int j, int i) {
-        if (memo[j][i] != -1)
-            return memo[j][i];
-        long long diff = (long long)nums[i] - nums[j];
-        long long count = 0;
-        for (int k = 0; k < j; k++) {
-            long long prevDiff =
-                (long long)nums[j] - nums[k];
-
-            if (prevDiff == diff) {
-                // New subsequence of length 3
-                // + extend all existing subsequences
-                count += 1 + solve(k, j);
+    long long solve(int j, int i,vector<vector<long long>>&dp, vector<int>&nums){
+        if(dp[j][i]!=-1) return dp[j][i];
+        long long diff =  (long long)nums[i]-nums[j];
+        long long count =0;
+        for(int k=0; k<j; k++){
+            long long prevdiff=(long long)nums[j]-nums[k];
+            if(prevdiff==diff){
+                count+=1+solve(k,j,dp,nums);
             }
         }
-
-        return memo[j][i] = count;
+        return dp[j][i]=count;
     }
-
-    int numberOfArithmeticSlices(vector<int>& arr) {
-        nums = arr;
-        int n = nums.size();
-        memo.assign(n, vector<long long>(n, -1));
-        long long ans = 0;
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < i; j++) {
-                ans += solve(j, i);
+    int numberOfArithmeticSlices(vector<int>& nums) {
+        int n=nums.size();
+        vector<vector<long long>>dp(n+1,vector<long long>(n+1,-1));
+        long long ans =0;
+        for(int i=0; i<nums.size(); i++){
+            for(int j=0; j<i; j++){
+                ans+=solve(j,i,dp,nums);
             }
         }
-
-        return (int)ans;
+        return (int)ans; 
     }
 };
